@@ -5,8 +5,9 @@ import glob
 libnameinput = raw_input('Full module name: ')
 keyinput = raw_input('Module key? (8 chars): ')[:8]
 doimages = raw_input("Do you need to create the images? (Y/N): ")
+isrhythm = raw_input("Are these all rhythmic exercises? (Y/N): ")
 
-if doimages == 'Y' or dimages == 'y':
+if doimages == 'Y' or doimages == 'y':
     for fname in sorted(glob.glob('*.xml')):
         try:
             test = converter.parse(fname)
@@ -53,6 +54,8 @@ for midifile in sorted(glob.glob('midi/*.mid')):
     xmlexercise = doc.createElement('exercise')
     xmlexercise.setAttribute('name',midifile[5:-4])
     xmlexercise.setAttribute('tempo','120')
+    if isrhythm == 'Y' or isrhythm == 'y':
+        xmlexercise.setAttribute('rhythm','true')
     temp = converter.parse(midifile)
     countin = calculate_countin(temp)
     xmlexercise.setAttribute('countin',str(countin))
