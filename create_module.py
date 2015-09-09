@@ -2,10 +2,11 @@ from music21 import *
 import xml.dom.minidom as xml
 import glob
 
-libnameinput = raw_input('full lib name? ')
-keyinput = raw_input('module key? (8 chars) ')
+libnameinput = raw_input('Full module name: ')
+keyinput = raw_input('Module key? (8 chars): ')[:8]
+doimages = raw_input("Do you need to create the images? (Y/N): ")
 
-if False:
+if doimages == 'Y' or dimages == 'y':
     for fname in sorted(glob.glob('*.xml')):
         try:
             test = converter.parse(fname)
